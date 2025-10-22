@@ -1,12 +1,18 @@
 program matrices
     implicit none
-    integer, dimension(3,4) :: A  ! 3 rows, 4 columns
-    integer, dimension(3,3) :: B  ! 3 rows, 3 columns
+    ! integer, dimension(3,4) :: A  ! 3 rows, 4 columns ! Better to not have them fixed size
+    ! integer, dimension(3,3) :: B  ! 3 rows, 3 columns
+    integer, allocatable :: A(:,:)
+    integer, allocatable :: B(:,:)
+    
     integer, allocatable :: C(:,:)  ! Fixed size matrix being C the multiplication of B and A
     
     integer :: i, j
     integer :: nrowsA, ncolsA, nrowsB, ncolsB ! Useful to check later the possible multiplications
 
+    allocate(A(3,4)) ! Done like this the compiler doesn't check if all the matmuls are possible 
+    allocate(B(3,3))
+    
     A = reshape([3,2,4,1, &
                  2,4,2,2, &
                  1,2,3,7], shape(A))
@@ -36,9 +42,9 @@ program matrices
     ! A*B Possible? Number of columns in A must be equal to number of rows in B
     if (ncolsA == nrowsB) then
         print *, "A*B is possible, resulting size: ", nrowsA, "x", ncolsB
-        ! allocate(C(nrowsA,ncolsB)) ! For any reason even if the condition is not satisfied the program execute these lines and gives error since matmul is not possible
-        ! C = matmul(A,B)
-        ! deallocate(C)
+        allocate(C(nrowsA,ncolsB)) ! For any reason even if the condition is not satisfied the program execute these lines and gives error since matmul is not possible
+        C = matmul(A,B)
+        deallocate(C)
     else
         print *, "A*B is NOT possible with current dimensions."
     end if
