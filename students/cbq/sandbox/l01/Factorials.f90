@@ -12,7 +12,7 @@ program factor
     else
       fact = fact * i
     end if
-        print * , " Factorials = " , fact 
+        print * , i, " ! = " , fact 
     end do
 end program factor
 
