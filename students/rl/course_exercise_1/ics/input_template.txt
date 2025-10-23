@@ -1,0 +1,9 @@
+# Template for initial conditions
+dt  # Time step
+dt_out  # Output time step
+t_end   # Final time
+n   # Number of particles
+m1 x1 y1 z1 vx1 vy1 vz1     # mass, (x, y, z), (vx, vy, vz)
+m2 x2 y2 z2 vx2 vy2 vz2
+...
+mn xn yn zn vxn vyn vzn
