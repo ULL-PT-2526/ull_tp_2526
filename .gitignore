@@ -1,10 +1,44 @@
+# === Entornos Virtuales y Dependencias ===
+# Ignora la carpeta de tu entorno (base) y otros nombres comunes
+base/
+venv/
+.venv/
+env/
+conda-env/
 
-# Operative System files (macOS)
-.DS_Store
-
-# Compiled files fortran
+# === Compilación de Fortran y C ===
+# Objetos y módulos compilados
 *.o
 *.mod
+*.smod
+*.a
+*.so
 
-# Binary files from exercises inside sandbox folder
-sandbox/*[!.]
+# Ejecutables (nombres específicos de tus programas)
+tree_openmp
+tree_mpi
+nbody_mpi
+*.exe
+*.out
+
+# === Archivos de Datos de Simulación ===
+# Evita subir archivos .dat pesados generados por la ejecución
+output_openmp.dat
+output_mpi.dat
+*.dat
+*.log
+*.csv
+
+# === Python (si usas scripts de análisis/gráficas) ===
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# === Sistema Operativo y Editores ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
